@@ -10,7 +10,7 @@ default:
 # Requires: `uv sync -E dev` so `maturin` is available, and Rust toolchain.
 rust-ext:
     uv run maturin develop \
-      --manifest-path /home/okhsunrog/code/rust/km003c-rs/km003c-lib/Cargo.toml \
+      --manifest-path km003c-rs/km003c-lib/Cargo.toml \
       --features python
 
 # Run test suite.
@@ -27,5 +27,5 @@ format:
 
 # Run the Streamlit protocol analyzer app.
 app:
-    uv run streamlit run km003c_analysis/app.py
+    uv run streamlit run km003c_analysis/app.py --server.enableCORS=false --server.enableXsrfProtection=false
 

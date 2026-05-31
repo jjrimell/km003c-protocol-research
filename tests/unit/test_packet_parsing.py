@@ -14,7 +14,7 @@ project_root = Path(__file__).parent.parent.parent
 analysis_scripts_path = project_root / "src" / "analysis" / "scripts"
 sys.path.insert(0, str(analysis_scripts_path))
 
-from km003c import parse_packet, AdcData, AdcQueueData, PdStatus, PdEventStream  # noqa: E402
+from km003c_lib import parse_packet, AdcData, AdcQueueData, PdStatus, PdEventStream  # noqa: E402
 
 # Mark all tests in this module as unit tests
 pytestmark = pytest.mark.unit
@@ -128,9 +128,9 @@ class TestPacketParsing:
 
     def test_parse_generic_data_command(self):
         """Test parsing of generic data commands with payloads."""
-        # Real Unknown68 command with 32-byte payload
+        # Real Unknown72 command with 32-byte payload
         extended_command_hex = (
-            "4402010133f8860c0054288cdc7e52729826872dd18b539a39c407d5c063d91102e36a9e"
+            "4802010133f8860c0054288cdc7e52729826872dd18b539a39c407d5c063d91102e36a9e"
         )
         extended_command_bytes = bytes.fromhex(extended_command_hex)
 
@@ -261,9 +261,9 @@ class TestPacketClassification:
             ("02010000", "Connect", "Connect command"),
             ("0c071000", "GetData", "PD GetData command"),
             (
-                "4402010133f8860c0054288cdc7e52729826872dd18b539a39c407d5c063d91102e36a9e",
+                "4802010133f8860c0054288cdc7e52729826872dd18b539a39c407d5c063d91102e36a9e",
                 "Generic",
-                "Unknown68 command",
+                "Unknown72 command",
             ),
         ]
 
@@ -285,8 +285,8 @@ class TestPacketClassification:
 
         # Multiple extended commands should all be Generic
         extended_commands = [
-            "4402010133f8860c0054288cdc7e52729826872dd18b539a39c407d5c063d91102e36a9e",
-            "44030101636beaf3f0856506eee9a27e89722dcfd18b539a39c407d5c063d91102e36a9e",
+            "4802010133f8860c0054288cdc7e52729826872dd18b539a39c407d5c063d91102e36a9e",
+            "48030101636beaf3f0856506eee9a27e89722dcfd18b539a39c407d5c063d91102e36a9e",
         ]
         for hex_data in extended_commands:
             packet_bytes = bytes.fromhex(hex_data)

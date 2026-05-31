@@ -16,7 +16,7 @@ try:
 except ImportError:
     USBPDPY_AVAILABLE = False
 
-from km003c import parse_packet, PdEventStream
+from km003c_lib import parse_packet, PdEventStream
 
 # Mark all tests in this module as unit tests
 pytestmark = pytest.mark.unit

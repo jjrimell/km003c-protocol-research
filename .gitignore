@@ -48,3 +48,6 @@ data/raw/*
 Thumbs.db
 
 rust_pcap_converter/target
+
+# Local cloned dependency
+km003c-rs/

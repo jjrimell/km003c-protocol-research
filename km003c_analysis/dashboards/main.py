@@ -215,7 +215,7 @@ def load_and_process_data(
         - The full DataFrame of all frames with transaction_id and tags.
     """
     # Load master dataset
-    project_root = Path(__file__).parent.parent
+    project_root = Path(__file__).parent.parent.parent
     master_df = pl.read_parquet(
         project_root / "data" / "processed" / "usb_master_dataset.parquet"
     )
@@ -273,7 +273,7 @@ def main() -> None:
 
     # Load master dataset to get source file list
     try:
-        project_root = Path(__file__).parent.parent
+        project_root = Path(__file__).parent.parent.parent
         df = pl.read_parquet(
             project_root / "data" / "processed" / "usb_master_dataset.parquet"
         )

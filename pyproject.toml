@@ -31,7 +31,7 @@ dependencies = [
 # The crate uses the `python` feature to enable pyo3 bindings.
 bindings = "pyo3"
 features = ["python"]
-manifest-path = "/home/okhsunrog/code/rust/km003c-rs/km003c-lib/Cargo.toml"
+manifest-path = "km003c-rs/km003c-lib/Cargo.toml"
 
 [dependency-groups]
 dev = [
